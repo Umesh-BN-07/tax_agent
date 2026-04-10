@@ -6,7 +6,7 @@ from report import generate_pdf
 
 st.set_page_config(page_title="Tax Guide Agent", layout="centered")
 
-st.title("💬 Tax Guide Agent (Fast UI)")
+st.title("💬 Tax Guide Agent ")
 
 # Initialize state
 if "step" not in st.session_state:
