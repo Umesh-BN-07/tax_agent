@@ -97,17 +97,20 @@ elif st.session_state.step == 4:
     st.write(chat_agent(data, tax, data["regime"]))
 
     # ✅ PDF button (FIXED POSITION)
-    if st.button("📄 Download Full Tax Report"):
-
-        file_path = generate_pdf(
+    # Generate PDF
+if st.button("📄 Generate Tax Report"):
+    file_path = generate_pdf(
         data,
         tax,
         data["regime"],
         old_tax,
         new_tax
     )
+    st.session_state.file_path = file_path
 
-    with open(file_path, "rb") as f:
+# Download button (safe)
+if "file_path" in st.session_state:
+    with open(st.session_state.file_path, "rb") as f:
         st.download_button(
             label="⬇️ Download PDF",
             data=f,
